@@ -1,25 +1,22 @@
 function SuggestionCard({ tips }) {
-
-  if (!tips) return null;
+  if (!tips || tips.length === 0) return null;
 
   return (
-
-    <div className="card">
-
+    <div
+      className="card"
+      role="region"
+      aria-label="Suggestions"
+    >
       <h2>💡 Suggestions</h2>
 
-      {
-        tips.map((tip, index) => (
-
-          <p key={index}>
+      <ul>
+        {tips.map((tip, index) => (
+          <li key={index}>
             {tip}
-          </p>
-
-        ))
-      }
-
+          </li>
+        ))}
+      </ul>
     </div>
-
   );
 }
 

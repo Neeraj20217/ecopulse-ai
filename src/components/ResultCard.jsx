@@ -1,15 +1,17 @@
 function ResultCard({ result }) {
-
   if (!result) return null;
 
   return (
-    <div className="card">
+    <div
+      className="card"
+      role="region"
+      aria-label="Carbon Footprint Result"
+    >
       <h2>🌍 Carbon Footprint</h2>
 
       <h1>{result.total} kg CO₂</h1>
 
       <h3>Eco Score: {result.score}/100</h3>
-
     </div>
   );
 }

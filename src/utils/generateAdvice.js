@@ -1,21 +1,41 @@
 export function generateAdvice(data) {
-
   let tips = [];
 
-  if (data.transport === "Car")
-    tips.push("🚍 Use public transport twice a week.");
+  if (data.transport === "Car") {
+    tips.push(
+      "🚍 Use public transport twice a week to lower transport emissions."
+    );
+  }
 
-  if (data.electricity > 150)
-    tips.push("💡 Reduce electricity usage by 15%.");
+  if (Number(data.electricity) > 150) {
+    tips.push(
+      "💡 Reduce electricity usage by 15% by turning off unused appliances."
+    );
+  }
 
-  if (data.waste > 10)
-    tips.push("♻ Reduce household waste.");
+  if (Number(data.waste) > 10) {
+    tips.push(
+      "♻ Separate recyclable waste and compost biodegradable waste."
+    );
+  }
 
-  if (data.diet === "Non-Vegetarian")
-    tips.push("🥗 Include more plant-based meals.");
+  if (data.diet === "Non-Vegetarian") {
+    tips.push(
+      "🥗 Include more plant-based meals to reduce food-related emissions."
+    );
+  }
 
-  if (tips.length === 0)
-    tips.push("🌎 Great job! Keep maintaining your eco lifestyle.");
+  if (Number(data.distance) > 50) {
+    tips.push(
+      "🚶 Consider walking or cycling for shorter trips."
+    );
+  }
+
+  if (tips.length === 0) {
+    tips.push(
+      "🌎 Great job! Keep maintaining your eco-friendly lifestyle."
+    );
+  }
 
   return tips;
 }

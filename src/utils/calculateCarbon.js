@@ -13,25 +13,40 @@ export function calculateCarbon(data) {
     "Non-Vegetarian": 3.5
   };
 
+  const distance = Math.max(0, Number(data.distance) || 0);
+  const electricityUsage = Math.max(
+    0,
+    Number(data.electricity) || 0
+  );
+  const wasteGenerated = Math.max(
+    0,
+    Number(data.waste) || 0
+  );
+
   const transport =
     (transportFactor[data.transport] || 0) *
-    Number(data.distance);
+    distance;
 
-  const electricity = Number(data.electricity) * 0.5;
+  const electricity = electricityUsage * 0.5;
 
   const diet = dietFactor[data.diet] || 0;
 
-  const waste = Number(data.waste) * 0.2;
+  const waste = wasteGenerated * 0.2;
 
-  const total = transport + electricity + diet + waste;
+  const total =
+    transport +
+    electricity +
+    diet +
+    waste;
 
   let score = 100 - total;
 
-  if (score < 0) score = 0;
+  score = Math.max(0, score);
 
   return {
     total: total.toFixed(2),
     score: score.toFixed(0),
+
     breakdown: [
       {
         name: "Transport",
